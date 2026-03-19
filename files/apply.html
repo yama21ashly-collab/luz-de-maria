@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参加申し込み | Luz de Maria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FBF7F0;--warm:#F3EBE0;--gold:#C8A96E;--gold-bright:#D4A94B;--gold-light:#E8D5B0;--terra:#C4703C;--navy:#1B2A4A;--navy-light:#2D4066;--deep:#0F1A2E;--text:#3D3428;--text-light:#7A7062;--text-muted:#A09888;--white:#FFFFFF;--display:'Playfair Display',serif;--body:'Outfit','Noto Sans JP',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--body);color:var(--text);background:var(--cream);min-height:100vh;display:flex;flex-direction:column}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+.lang-toggle{position:fixed;top:24px;right:24px;z-index:1001;display:flex;border:1.5px solid rgba(200,169,110,0.4);border-radius:100px;overflow:hidden;backdrop-filter:blur(16px);background:rgba(251,247,240,0.8)}.lang-btn{padding:7px 16px;font-family:var(--body);font-size:11px;letter-spacing:2.5px;background:transparent;color:var(--text-muted);border:none;cursor:pointer;transition:all 0.35s;font-weight:500}.lang-btn.active{background:var(--gold);color:var(--white)}
+.page-header{background:var(--deep);padding:80px 40px 60px;text-align:center;position:relative;overflow:hidden}
+.page-header::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(200,169,110,0.06) 0%,transparent 60%);border-radius:50%}
+.back-link{position:absolute;top:24px;left:24px;color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;display:flex;align-items:center;gap:6px;transition:color 0.3s;z-index:1}.back-link:hover{color:var(--gold-light)}
+.page-header svg{width:60px;height:60px;margin-bottom:16px;position:relative;z-index:1}
+.page-header h1{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.2rem);color:var(--white);font-weight:400;position:relative;z-index:1}
+.page-header h1 em{color:var(--gold);font-style:italic}
+.page-header p{color:rgba(255,255,255,0.45);font-size:14px;margin-top:8px;position:relative;z-index:1;font-weight:300}
+.form-container{max-width:560px;margin:-40px auto 60px;padding:0 20px;position:relative;z-index:2;flex:1}
+.form-card{background:var(--white);border-radius:20px;padding:40px 36px;border:1.5px solid var(--gold);box-shadow:0 20px 60px rgba(27,42,74,0.06)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:12px;color:var(--text-light);letter-spacing:1px;margin-bottom:6px;font-weight:500}
+.form-group .required{color:var(--terra);margin-left:4px;font-size:10px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:13px 16px;border:1.5px solid var(--warm);border-radius:10px;font-family:var(--body);font-size:14px;color:var(--text);background:var(--cream);outline:none;transition:border-color 0.3s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{min-height:100px;resize:vertical}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-muted)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:540px){.form-row{grid-template-columns:1fr}}
+.form-submit{width:100%;padding:16px;border:none;border-radius:100px;font-family:var(--body);font-size:13px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all 0.4s;margin-top:12px;background:var(--gold);color:var(--white)}
+.form-submit:hover{background:var(--gold-bright);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,169,110,0.3)}
+.form-note{font-size:12px;color:var(--text-muted);text-align:center;margin-top:16px;line-height:1.6}
+footer{padding:32px;text-align:center;font-size:11px;color:var(--text-muted);letter-spacing:1.5px;border-top:1px solid var(--warm)}
+.success-msg{display:none;text-align:center;padding:40px 20px}.success-msg h2{font-family:var(--display);font-size:24px;color:var(--navy);margin-bottom:12px}.success-msg p{color:var(--text-light);font-size:14px;line-height:1.7;margin-bottom:24px}.success-msg a{color:var(--gold-bright);text-decoration:none;font-weight:500}
+</style>
+</head>
+<body>
+<div class="lang-toggle"><button class="lang-btn active" onclick="setLang('ja')">JA</button><button class="lang-btn" onclick="setLang('es')">ES</button></div>
+<div class="page-header">
+<a href="index.html" class="back-link">← <span data-ja="トップに戻る" data-es="Volver al inicio">トップに戻る</span></a>
+<svg viewBox="0 0 60 60"><defs><linearGradient id="g1" x1="0" y1="1" x2=".5" y2="0"><stop offset="0%" stop-color="#E8793A"/><stop offset="100%" stop-color="#F0A030"/></linearGradient><linearGradient id="g2" x1="0" y1="1" x2=".5" y2="0"><stop offset="0%" stop-color="#F0A030"/><stop offset="100%" stop-color="#E8C840"/></linearGradient><linearGradient id="g3" x1="0" y1="1" x2=".5" y2="0"><stop offset="0%" stop-color="#E8C840"/><stop offset="100%" stop-color="#F2DC60"/></linearGradient><clipPath id="h"><rect x="5" y="0" width="50" height="36"/></clipPath></defs><g clip-path="url(#h)"><circle cx="30" cy="39" r="25" fill="none" stroke="url(#g3)" stroke-width="5"/><circle cx="30" cy="39" r="18" fill="none" stroke="url(#g2)" stroke-width="5"/><circle cx="30" cy="39" r="11" fill="none" stroke="url(#g1)" stroke-width="5"/><circle cx="30" cy="39" r="5" fill="#E8793A"/></g><line x1="5" y1="39" x2="55" y2="39" stroke="#C8A96E" stroke-width=".5" opacity=".3"/></svg>
+<h1 data-ja="Luz de Maria に<em>参加する</em>" data-es="<em>Unirse</em> a Luz de Maria">Luz de Maria に<em>参加する</em></h1>
+<p data-ja="内容を確認のうえ、ご案内をお送りします。" data-es="Revisaremos tu solicitud y te enviaremos la información.">内容を確認のうえ、ご案内をお送りします。</p>
+</div>
+
+<div class="form-container">
+<div class="form-card" id="formCard">
+<div class="form-group"><label data-ja="お名前" data-es="Nombre">お名前<span class="required">*</span></label><input type="text" data-placeholder-ja="山田 太郎 / Carlos Mendoza" data-placeholder-es="Carlos Mendoza / 山田 太郎" placeholder="山田 太郎 / Carlos Mendoza" required></div>
+<div class="form-group"><label data-ja="メールアドレス" data-es="Correo electrónico">メールアドレス<span class="required">*</span></label><input type="email" placeholder="email@example.com" required></div>
+<div class="form-row">
+<div class="form-group"><label data-ja="生年月日" data-es="Fecha de nacimiento">生年月日<span class="required">*</span></label><input type="date" required></div>
+<div class="form-group"><label data-ja="お住まいの国" data-es="País de residencia">お住まいの国<span class="required">*</span></label><select required><option value="" data-ja="選択してください" data-es="Selecciona">選択してください</option><option value="jp" data-ja="日本" data-es="Japón">日本</option><option value="pe" data-ja="ペルー" data-es="Perú">ペルー</option><option value="es" data-ja="スペイン" data-es="España">スペイン</option><option value="mx" data-ja="メキシコ" data-es="México">メキシコ</option><option value="co" data-ja="コロンビア" data-es="Colombia">コロンビア</option><option value="ar" data-ja="アルゼンチン" data-es="Argentina">アルゼンチン</option><option value="other" data-ja="その他" data-es="Otro">その他</option></select></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label data-ja="学びたい言語" data-es="Idioma a aprender">学びたい言語<span class="required">*</span></label><select required><option value="" data-ja="選択してください" data-es="Selecciona">選択してください</option><option value="es" data-ja="スペイン語" data-es="Español">スペイン語</option><option value="ja" data-ja="日本語" data-es="Japonés">日本語</option><option value="both" data-ja="両方" data-es="Ambos">両方</option></select></div>
+<div class="form-group"><label data-ja="現在のレベル" data-es="Tu nivel actual">現在のレベル<span class="required">*</span></label><select required><option value="" data-ja="選択してください" data-es="Selecciona">選択してください</option><option value="zero" data-ja="まったくの初心者" data-es="Principiante total">まったくの初心者</option><option value="beginner" data-ja="少し学んだことがある" data-es="He estudiado un poco">少し学んだことがある</option><option value="intermediate" data-ja="日常会話くらいできる" data-es="Conversación básica">日常会話くらいできる</option><option value="advanced" data-ja="かなり話せる" data-es="Nivel avanzado">かなり話せる</option></select></div>
+</div>
+<div class="form-group"><label data-ja="参加のきっかけ・期待すること" data-es="Motivo y expectativas">参加のきっかけ・期待すること</label><textarea data-placeholder-ja="例：海外の友達を作りたい、仕事でスペイン語が必要になった、など" data-placeholder-es="Ej: Quiero hacer amigos internacionales, necesito español para el trabajo, etc." placeholder="例：海外の友達を作りたい、仕事でスペイン語が必要になった、など"></textarea></div>
+<button class="form-submit" onclick="submitForm()" data-ja="この内容で申し込む" data-es="Enviar solicitud">この内容で申し込む</button>
+<p class="form-note" data-ja="※ 送信後、2営業日以内にメールでご連絡します。" data-es="※ Te contactaremos por correo en un plazo de 2 días hábiles.">※ 送信後、2営業日以内にメールでご連絡します。</p>
+</div>
+<div class="success-msg" id="successMsg">
+<h2 data-ja="お申し込みありがとうございます！" data-es="¡Gracias por tu solicitud!">お申し込みありがとうございます！</h2>
+<p data-ja="内容を確認のうえ、ご登録のメールアドレスにご案内をお送りします。Luz de Mariaでお会いできることを楽しみにしています！" data-es="Revisaremos tu solicitud y te enviaremos la información por correo. ¡Esperamos verte en Luz de Maria!">内容を確認のうえ、ご登録のメールアドレスにご案内をお送りします。Luz de Mariaでお会いできることを楽しみにしています！</p>
+<a href="index.html" data-ja="← トップに戻る" data-es="← Volver al inicio">← トップに戻る</a>
+</div>
+</div>
+
+<footer><span>© 2026 Luz de Maria. All rights reserved.</span></footer>
+<script>
+let currentLang='ja';function setLang(l){currentLang=l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.trim()===l.toUpperCase()));document.documentElement.lang=l;document.querySelectorAll('[data-'+l+']').forEach(e=>{e.innerHTML=e.getAttribute('data-'+l)});document.querySelectorAll('[data-placeholder-'+l+']').forEach(e=>{e.placeholder=e.getAttribute('data-placeholder-'+l)})}
+function submitForm(){document.getElementById('formCard').style.display='none';document.getElementById('successMsg').style.display='block';window.scrollTo({top:0,behavior:'smooth'})}
+</script>
+</body>
+</html>
